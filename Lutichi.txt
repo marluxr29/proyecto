@@ -1,5 +1,5 @@
-CREATE DATABASE mientras;
-USE mientras;
+CREATE DATABASE Lutichi;
+USE Lutichi;
 CREATE TABLE vendedor(
     id_vendedor int AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(50) not null
@@ -16,7 +16,9 @@ CREATE TABLE producto(
     id_producto int AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(100),
     autor varchar(50),
+    genero varchar(25) not null,
     precio int,
+    cantidad int not null,
     disponibilidad int DEFAULT 0 -- si es 1, esta disponible
 );
 CREATE TABLE factura(
@@ -27,5 +29,6 @@ CREATE TABLE factura(
     FOREIGN KEY (id_vendedor) REFERENCES vendedor(id_vendedor),
     id_producto int,
     FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-    cant_producto int not null,
+    cantidad int not null,
+    preciototal double
 )
